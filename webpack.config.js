@@ -30,10 +30,6 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
-        test: /.jsx$/, //使用loader的目标文件。这里是.jsx
-        loader: 'babel-loader'
-      },
-      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
