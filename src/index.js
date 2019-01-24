@@ -1,1 +1,2 @@
-import './vue/index'
+import '../styles/base.less'; 
+import './vue/index';

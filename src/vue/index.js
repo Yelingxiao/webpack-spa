@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import App from './App';
+// import Vue from 'vue';
+import App from './demo_1/App.vue';
 
 new Vue({
   el: '#app',

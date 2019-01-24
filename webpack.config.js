@@ -10,7 +10,7 @@ function resolve(dir) {
 module.exports = {
   mode: 'development', 
   entry: {
-    app: './src/vue/index.js', 
+    app: './src/index.js', 
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -48,7 +48,7 @@ module.exports = {
         }
       }
     ]
-  },
+ },
   devServer: {
     contentBase: resolve('dist'), // 根目录
     hot: true, // 是否开启热替换，无须手动刷新浏览器
@@ -59,6 +59,10 @@ module.exports = {
   plugins: [
     // 加在最前面
     new VueLoaderPlugin(),
+    new webpack.ProvidePlugin({
+      PIXI: 'pixi.js',
+      Vue: ['vue/dist/vue.esm.js','default']
+    }),
     // new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
