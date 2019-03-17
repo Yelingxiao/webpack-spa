@@ -53,6 +53,7 @@ module.exports = {
     contentBase: resolve('dist'), // 根目录
     hot: true, // 是否开启热替换，无须手动刷新浏览器
     port: 8081, // 端口
+    host: '0.0.0.0', // host
     open: true, // 是否自动打开浏览器
     noInfo: true // 不提示打包信息，错误和警告仍然会显示
   },
