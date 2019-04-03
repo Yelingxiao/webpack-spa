@@ -4,42 +4,30 @@
  * bind
  * new
  */
-Function.prototype.myCall = function(context) {
-  if (typeof this !== 'function') {
-    throw new TypeError('Error')
-  }
-  context = context || window
+Function.prototype.myCall = function(context = window) {
+  if (typeof this !== 'function') throw new TypeError('Error')
+  console.log(context, this)
   context.fn = this
-  const args = [...arguments].slice(1)
-  const result = context.fn(...args)
-  console.log(args, context, context.fn, result)
+  const arg = [...arguments].slice(1)
+  const result = context.fn(...arg)
   delete context.fn
   return result
 }
 
-Function.prototype.myApply = function(context) {
-  if (typeof this !== 'function') {
-    throw new TypeError('Error')
-  }
-  context = context || window
+Function.prototype.myApply = function(context = window) {
+  if (typeof this !== 'function') throw new TypeError('Error')
   context.fn = this
-  let result
+  let result = null
   // 处理参数和 call 有区别
-  if (arguments[1]) {
-    result = context.fn(...arguments[1])
-  } else {
-    result = context.fn()
-  }
+  arguments[1] ? result = context.fn(...arguments[1]) : result = context.fn()
   delete context.fn
   return result
 }
 
-Function.prototype.myBind = function (context) {
-  if (typeof this !== 'function') {
-    throw new TypeError('Error')
-  }
+Function.prototype.myBind = function (context = window) {
+  if (typeof this !== 'function') throw new TypeError('Error')
   const _this = this
-  const args = [...arguments].slice(1)
+  const args = [...arguments].slice(1) 
   // 返回一个函数
   return function F() {
     // 因为返回了一个函数，我们可以 new F()，所以需要判断
@@ -52,28 +40,40 @@ Function.prototype.myBind = function (context) {
 
 function create() {
   let obj = {}
-  let Con = [].shift.call(arguments)
+  let Con = [].shift.call( )
   obj.__proto__ = Con.prototype
   let result = Con.apply(obj, arguments)
   return result instanceof Object ? result : obj
 }
+/**
+ * 要创建一个新实例，必须使用new操作符。以这种方式调用构造函数实际上会经历以下4个步骤：       
+ * （1）创建一个新对象；       
+ * （2）将构造函数的作用域赋给新对象（因此this就指向了这个对象）；       
+ * （3）执行构造函数中的代码（为这个新对象添加属性）；       
+ * （4）返回新对象。
+ */
+function New(func) {
+  let obj = {}
+  if (func.prototype !== null) es.__proto__ = func.prototype
+  let ret = func.apply(res, Array.prototype.slice.call(arguments, 1));
+  if ((typeof ret === "object" || typeof ret === "function") && ret !== null) return ret
+  return res;
+}
 
 function Product(name, price) {
-  this.name = name;
-  this.price = price;
+  this.name = name
+  this.price = price
 }
 
 function Food(name, price) {
-  Product.call(this, name, price);
-  this.category = 'food';
-}
-
-function Food2(name, price) {
-  console.log(this)
+  this.category = 'food'
   Product.myCall(this, name, price);
-  this.category = 'food';
+}
+function Food2(name, price) {
+  this.category = 'food'
+  Product.myBind(this)(name, price);
 }
 
-console.log(new Food('cheese', 5).name);
-console.log(new Food2('cheese', 5).name);
-
+let product = new Food(12,12)
+let product1 = new Food2(12,12)
+console.log(product, product1)
