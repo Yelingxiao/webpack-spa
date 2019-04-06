@@ -6,7 +6,6 @@
  */
 Function.prototype.myCall = function(context = window) {
   if (typeof this !== 'function') throw new TypeError('Error')
-  console.log(context, this)
   context.fn = this
   const arg = [...arguments].slice(1)
   const result = context.fn(...arg)
@@ -45,6 +44,7 @@ function create() {
   let result = Con.apply(obj, arguments)
   return result instanceof Object ? result : obj
 }
+
 /**
  * 要创建一个新实例，必须使用new操作符。以这种方式调用构造函数实际上会经历以下4个步骤：       
  * （1）创建一个新对象；       
@@ -76,4 +76,3 @@ function Food2(name, price) {
 
 let product = new Food(12,12)
 let product1 = new Food2(12,12)
-console.log(product, product1)
