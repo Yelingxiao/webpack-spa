@@ -41,7 +41,7 @@ module.exports = {
       {   
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
-        exclude: [],
+        exclude: /node_modules/,
         options: {
           limit: 1000,
           name: 'img/[name].[hash:7].[ext]'
