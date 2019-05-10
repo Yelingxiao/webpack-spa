@@ -61,6 +61,7 @@ module.exports = {
     open: true, // 是否自动打开浏览器
     noInfo: true // 不提示打包信息，错误和警告仍然会显示
   },
+  devtool: 'source-map',
   plugins: [
     // 加在最前面
     new VueLoaderPlugin(),
