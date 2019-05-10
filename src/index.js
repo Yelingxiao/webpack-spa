@@ -1,2 +1,1 @@
-import '../styles/base.less'
-import './js/call'
+import './css/path'
