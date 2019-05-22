@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --hot --mode=development",
-    "build": "NODE_ENV=production webpack --mode=production"
+    "build": "NODE_ENV=production webpack --mode=production",
+    "start": "node ./src/node.js"
   },
   "keywords": [],
   "author": "",

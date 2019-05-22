@@ -1,1 +1,1 @@
-import './leetcode/twoSum'
+import '../src/30s-code/array'
