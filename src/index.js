@@ -1,1 +1,1 @@
-import '../src/30s-code/array'
+import '../src/vue/main.js'
