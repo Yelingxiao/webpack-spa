@@ -1,1 +1,1 @@
-import '../src/vue/main.js'
+import '../src/deepVue/section1/index.js'
