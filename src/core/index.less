@@ -1,0 +1,75 @@
+//设置背景无图片
+.bgi() {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  overflow: hidden;
+} 
+
+//设置背景带图片
+.bgi(@src) {
+  .bgi();
+  background-image: url(@src);
+} 
+
+.ps(@top,@left) {
+  position: absolute;
+  top: @top * 1px;
+  left: @left * 1px;
+}
+.pr(@top,@right) {
+  position: absolute;
+  top: @top * 1px;
+  right: @right * 1px;
+}
+.wd(@w,@h) {
+  width: @w * 1px; 
+  height: @h * 1px;
+}
+.bgsize {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.center(@top) {
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  top: @top * 1px;
+}
+.vcenter() {
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  top:0;
+  bottom: 0;
+}
+
+.shadow() {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.clearfix() {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+
+    content: '';
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.text(@fontsize, @height: @fontsize, @lineheight: @height) {
+  font-size: @fontsize*1px;
+  height: @height*1px;
+  line-height: @lineheight*1px;
+}
