@@ -1,1 +1,1 @@
-import '../src/deepVue/section1/index.js'
+import '../src/canvas/demo.js'
