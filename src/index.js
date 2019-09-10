@@ -1,1 +1,1 @@
-import '../src/canvas/demo.js'
+import '../src/leetcode/lengthOfLongestSubstring.js'

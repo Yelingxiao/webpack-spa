@@ -8,7 +8,7 @@
  * @param {number} target
  * @return {number[]}
  */
-let twoSum = function(nums, target) {
+const twoSum = function(nums, target) {
   let len = nums.length
   for (let i = 0; i < len; i++) {
     for (let j = i + 1; j < len; j++) {
