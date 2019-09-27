@@ -26,7 +26,7 @@ document.addEventListener('pointerdown', ev => {
       .text(inside ? 'in' : 'out')
       .move(ev.pageX, ev.pageY)
       .stroke('#1a9f60')
-    returnd
+    return
   }
   index === polygons.length - 1 ? index = 0 : index++
   draw.clear()

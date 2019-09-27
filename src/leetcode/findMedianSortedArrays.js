@@ -10,5 +10,4 @@ const findMedianSortedArrays = function(nums1 = [], nums2 = []) {
   return length % 2 ? arr[~~(length / 2)] : (arr[length / 2] + arr[length / 2 - 1]) / 2
 }
 
-let a = findMedianSortedArrays([1, 3], [2])
-console.log(a)
+findMedianSortedArrays([1, 3], [2])

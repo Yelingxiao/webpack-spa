@@ -33,5 +33,4 @@ var lengthOfLongestSubstring2 = function(s) {
   return res
 }
 
-let a = lengthOfLongestSubstring2('aab')
-console.log(a)
+lengthOfLongestSubstring2('aab')
