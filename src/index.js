@@ -1,1 +1,1 @@
-import '../src/canvas/heart.js'
+import '../src/designMode/Decorate.js'
