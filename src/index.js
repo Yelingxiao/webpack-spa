@@ -1,1 +1,1 @@
-import '../src/designMode/Decorate.js'
+import '../src/canvas/granular-song.js'

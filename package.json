@@ -39,7 +39,8 @@
   },
   "dependencies": {
     "less": "^3.9.0",
-    "pixi.js": "^4.8.5",
+    "pixi.js": "^5.1.5",
+    "popmotion": "^8.7.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "svg.js": "^2.7.1",
