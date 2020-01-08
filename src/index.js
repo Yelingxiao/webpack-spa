@@ -1,1 +1,1 @@
-import './canvas/granular-song/granular-song.js'
+import './canvas/granular-song/granular-song'

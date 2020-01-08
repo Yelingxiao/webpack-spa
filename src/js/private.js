@@ -1,9 +1,10 @@
 class Private {
-  constructor() {
+  constructor () {
     this.#jump()
     this.jump()
     console.log(this.#name)
   }
+
   // 私有属性 外部无法使用
   #name = 'private'
   name = 'private'
@@ -18,5 +19,5 @@ class Private {
     return false
   }
 }
-const private = new Private()
+// const private = new Private()
 // console.log(private.jump())

@@ -1,10 +1,12 @@
+/* eslint-disable no-proto */
+/* eslint-disable no-extend-native */
 /**
  * call
  * apply
  * bind
  * new
  */
-Function.prototype.myCall = function(context = window) {
+Function.prototype.myCall = function (context = window) {
   if (typeof this !== 'function') throw new TypeError('Error')
   context.fn = this
   const arg = [...arguments].slice(1)
@@ -13,7 +15,7 @@ Function.prototype.myCall = function(context = window) {
   return result
 }
 
-Function.prototype.myApply = function(context = window) {
+Function.prototype.myApply = function (context = window) {
   if (typeof this !== 'function') throw new TypeError('Error')
   context.fn = this
   let result = null
@@ -26,9 +28,9 @@ Function.prototype.myApply = function(context = window) {
 Function.prototype.myBind = function (context = window) {
   if (typeof this !== 'function') throw new TypeError('Error')
   const _this = this
-  const args = [...arguments].slice(1) 
+  const args = [...arguments].slice(1)
   // 返回一个函数
-  return function F() {
+  return function F () {
     // 因为返回了一个函数，我们可以 new F()，所以需要判断
     if (this instanceof F) {
       return new _this(...args, ...arguments)
@@ -37,42 +39,42 @@ Function.prototype.myBind = function (context = window) {
   }
 }
 
-function create() {
-  let obj = {}
-  let Con = [].shift.call( )
+function create () {
+  const obj = {}
+  const Con = [].shift.call()
   obj.__proto__ = Con.prototype
-  let result = Con.apply(obj, arguments)
+  const result = Con.apply(obj, arguments)
   return result instanceof Object ? result : obj
 }
 
 /**
- * 要创建一个新实例，必须使用new操作符。以这种方式调用构造函数实际上会经历以下4个步骤：       
- * （1）创建一个新对象；       
- * （2）将构造函数的作用域赋给新对象（因此this就指向了这个对象）；       
- * （3）执行构造函数中的代码（为这个新对象添加属性）；       
+ * 要创建一个新实例，必须使用new操作符。以这种方式调用构造函数实际上会经历以下4个步骤：
+ * （1）创建一个新对象；
+ * （2）将构造函数的作用域赋给新对象（因此this就指向了这个对象）；
+ * （3）执行构造函数中的代码（为这个新对象添加属性）；
  * （4）返回新对象。
  */
-function New(func) {
-  let obj = {}
+function New (func) {
+  const obj = {}
   if (func.prototype !== null) es.__proto__ = func.prototype
-  let ret = func.apply(res, Array.prototype.slice.call(arguments, 1));
-  if ((typeof ret === "object" || typeof ret === "function") && ret !== null) return ret
-  return res;
+  const ret = func.apply(res, Array.prototype.slice.call(arguments, 1))
+  if ((typeof ret === 'object' || typeof ret === 'function') && ret !== null) return ret
+  return res
 }
 
-function Product(name, price) {
+function Product (name, price) {
   this.name = name
   this.price = price
 }
 
-function Food(name, price) {
+function Food (name, price) {
   this.category = 'food'
-  Product.myCall(this, name, price);
+  Product.myCall(this, name, price)
 }
-function Food2(name, price) {
+function Food2 (name, price) {
   this.category = 'food'
-  Product.myBind(this)(name, price);
+  Product.myBind(this)(name, price)
 }
 
-let product = new Food(12,12)
-let product1 = new Food2(12,12)
+const product = new Food(12, 12)
+const product1 = new Food2(12, 12)

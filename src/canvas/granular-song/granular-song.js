@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-expressions */
 import scholar from './song'
 import { tween, transform } from 'popmotion'
 const { random, PI, cos, sin } = Math
 const PI2 = PI * 2
-const { renderer, stage, ticker, screen, view, Shader } = new PIXI.Application({
+const { renderer, stage, ticker, screen, view } = new PIXI.Application({
   width: window.screen.availWidth,
-  height:window.screen.availHeight,
+  height: window.screen.availHeight,
   antialias: true,
   transparent: true
 })
@@ -17,7 +18,7 @@ document.body.appendChild(view)
 document.addEventListener('touchmove', e => e.preventDefault(), false)
 
 class Granular {
-  constructor(colors, song) {
+  constructor (colors, song) {
     this.colors = colors
     this.song = song
     this.pool = []
@@ -25,21 +26,20 @@ class Granular {
     this.i = 0
   }
 
-  init() {
+  init () {
     for (let i = 0; i < 300; i++) {
       const dot = this.create()
       this.pool.push(dot)
       stage.addChild(dot)
     }
     this.add()
-    this.play()
   }
 
-  create() {
+  create () {
     const dot = new PIXI.Graphics()
-    .beginFill(0xffffff)
-    .drawCircle(0, 0, 3)
-    .endFill()
+      .beginFill(0xffffff)
+      .drawCircle(0, 0, 3)
+      .endFill()
     dot.tint = this.colors[(random() * this.colors.length) | 0]
     dot.position.set(screen.width * random(), screen.height * random())
     dot.info = {
@@ -50,7 +50,7 @@ class Granular {
     return dot
   }
 
-  add() {
+  add () {
     ticker.add(() => {
       for (const dot of this.pool) {
         const { info } = dot
@@ -63,7 +63,7 @@ class Granular {
           : dot.x > zone.right
             ? (dot.x = zone.left)
             : 0
-          
+
         dot.y < zone.top
           ? (dot.y = zone.bottom)
           : dot.y > zone.bottom
@@ -73,30 +73,30 @@ class Granular {
     })
   }
 
-  render(s) {
+  render (s) {
     const text = new PIXI.Text(s, {
       fill: 0x639bff,
       fontSize: screen.width < 900 ? 48 : 72,
-      fontFamily : 'Arial',
-      align : 'center'
+      fontFamily: 'Arial',
+      align: 'center'
     })
     const { width, height } = text
     const pixels = renderer.extract.pixels(text)
     const delta = 4
-    
+
     for (let x = 0; x <= width; x += delta) {
       for (let y = 0; y <= height; y += delta) {
         if (!pixels[(x + y * width) * 4]) continue
         const dot = this.pool.pop() || this.create()
         this.dots.push(dot)
         stage.addChild(dot)
-        
+
         tween({
           from: { x: dot.x, y: dot.y },
           to: {
-             x: x + (screen.width - text.width) / 2, 
-             y: y + (screen.height - text.height) / 2
-            },
+            x: x + (screen.width - text.width) / 2,
+            y: y + (screen.height - text.height) / 2
+          },
           duration: 1e3
         }).start({
           update: v => dot.position.copyFrom(v)
@@ -105,7 +105,7 @@ class Granular {
     }
   }
 
-  play() {
+  play () {
     this.i === this.song.length ? (i = 0) : 0
     const time = this.i ? +this.song[this.i].time - this.song[this.i - 1].time : this.song[this.i].time
     setTimeout(() => {
@@ -117,4 +117,12 @@ class Granular {
 }
 
 const colors = [0x0781f0, 0x84bae8, 0x47c6d6, 0x81d7e2]
-new Granular(colors, scholar).init()
+const granular = new Granular(colors, scholar)
+granular.init()
+
+const $song = document.querySelector('#song')
+const $body = document.querySelector('body')
+$body.addEventListener('click', () => {
+  $song.play()
+  granular.play()
+})

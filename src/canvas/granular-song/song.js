@@ -1,24 +1,25 @@
-function parseLyric(text) {
-  //先按行分割
+function parseLyric (text) {
+  // 先按行分割
   const lyric = text.split('\n')
-  //新建一个数组存放最后结果
-  let lrc = []
+  // 新建一个数组存放最后结果
+  const lrc = []
   const _l = lyric.length
   for (let i = 0; i < _l; i++) {
-    //正则匹配播放时间返回一个数组
-    const time = lyric[i].match(/[(\d+\d+\d)?\)]/g)
+    // 正则匹配播放时间返回一个数组
+    // eslint-disable-next-line no-useless-escape
+    let time = lyric[i].match(/[(\d+\d+\d)?\)]/g)
     let txt = lyric[i].match(/](.*)/)
 
     // 过滤掉空行等非歌词正文部分
     if (txt) {
       txt = txt[1]
-      let min = Number(time[0] + time[1])
-      let sec = Number(time[2] + time[3])
-      let ms = Number(time[4] + time[5])
+      const min = Number(time[0] + time[1])
+      const sec = Number(time[2] + time[3])
+      const ms = Number(time[4] + time[5])
       // //换算时间，保留两位小数
       time = (min * 60 + sec) * 1e3 + ms * 10
-      
-      //把时间和对应的歌词保存到数组
+
+      // 把时间和对应的歌词保存到数组
       lrc.push({
         time,
         txt

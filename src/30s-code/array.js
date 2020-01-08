@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 const all = (arr, fn = Boolean) => arr.every(fn)
 
 const allEqual = arr => arr.every(val => val === arr[0])
@@ -19,7 +20,7 @@ bifurcate([1, 2, 3, 4], [1, 1, 0, 1])
 
 const chunk = (arr, size) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => {
-    return  arr.slice(i * size, i * size + size)
+    return arr.slice(i * size, i * size + size)
   })
-let a = chunk([1, 2, 3, 4, 5], 2) // [[1,2],[3,4],[5]]
+const a = chunk([1, 2, 3, 4, 5], 2) // [[1,2],[3,4],[5]]
 console.log(a)

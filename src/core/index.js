@@ -44,7 +44,7 @@ const toPercent = (point) => {
 
 // 生成不重复的随机数
 const createRandomArr = (num, from, to) => {
-  let arr = []
+  const arr = []
   let page = 0
   while (arr.length < num) {
     page = randomNum(from, to)
@@ -55,13 +55,12 @@ const createRandomArr = (num, from, to) => {
 
 // 将时间戳转化为正常日期
 const formatDateTime = (time = +new Date()) => {
-  let date = new Date(time + 8 * 3600 * 1000); // 增加8小时
-  return date.toJSON().substr(0, 19).replace('T', ' ');
+  const date = new Date(time + 8 * 3600 * 1000) // 增加8小时
+  return date.toJSON().substr(0, 19).replace('T', ' ')
 }
 
 export {
   delay,
-  px2rem,
   randomNum,
   createRandomArr,
   arrMin,

@@ -1,0 +1,5 @@
+src/lib/*.js
+dist/**/*.js
+src/libs/*.js
+src/vue/*.vue
+libs/*.js

@@ -39,7 +39,7 @@ document.addEventListener('contextmenu', ev => ev.preventDefault())
  * @param {Array<number>} point - 点坐标: [x, y]
  * @param {Array<number>} points - 多边形坐标点: [x1,y1, x2,y2, x3,y3...]
  */
-function wind(point, points) {
+function wind (point, points) {
   let wn = 0
   for (let i = 0; i < points.length; i += 2) {
     const p1 = [points[i], points[i + 1]]
@@ -60,6 +60,6 @@ function wind(point, points) {
  * <0: p 在线段右侧
  * >0: p 在线段左侧
  */
-function isLeft(p, p1, p2) {
+function isLeft (p, p1, p2) {
   return (p2[0] - p1[0]) * (p[1] - p1[1]) - (p[0] - p1[0]) * (p2[1] - p1[1])
 }

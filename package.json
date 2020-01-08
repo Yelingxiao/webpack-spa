@@ -38,11 +38,15 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
     "less": "^3.9.0",
     "pixi.js": "^5.1.5",
     "popmotion": "^8.7.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "standard": "^14.3.1",
     "svg.js": "^2.7.1",
     "vue": "^2.5.21"
   }

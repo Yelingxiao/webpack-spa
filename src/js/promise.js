@@ -1,6 +1,6 @@
 // promise
 class Promise {
-  constructor(executor) {
+  constructor (executor) {
     this.status = 'PENDING'
     this.value = ''
     this.onfulfilledArr = []
@@ -11,7 +11,7 @@ class Promise {
     executor(this.resolve, this.reject)
   }
 
-  resolve(value) {
+  resolve (value) {
     if (this.status === 'PENDING') {
       this.value = value
       this.onfulfilledArr.forEach(item => {
@@ -21,7 +21,7 @@ class Promise {
     }
   }
 
-  reject(value) {
+  reject (value) {
     if (this.status === 'PENDING') {
       this.value = value
       this.onrejectedArr.forEach(item => {
@@ -31,32 +31,32 @@ class Promise {
     }
   }
 
-  then(onfulfilled, onrejected) {
+  then (onfulfilled, onrejected) {
     if (this.status === 'FULFILLED') {
       const res = onfulfilled(this.value)
       console.log(222)
-      return new Promise(function(resolve, reject) {
+      return new Promise(function (resolve, reject) {
         resolve(res)
       })
     }
     if (this.status === 'REJECTED') {
       const res = onrejected(this.value)
-      return new Promise(function(resolve, reject) {
+      return new Promise(function (resolve, reject) {
         reject(res)
       })
     }
     if (this.status === 'PENDING') {
       console.log(111)
-      const self = this;
-      return new Promise(function(resolve, reject) {
+      const self = this
+      return new Promise(function (resolve, reject) {
         self.onfulfilledArr.push(() => {
           const res = onfulfilled(self.value)
-          resolve(res);
-        });
+          resolve(res)
+        })
         self.onrejectedArr.push(() => {
           const res = onrejected(self.value)
-          reject(res);
-        });
+          reject(res)
+        })
       })
     }
   }
@@ -73,7 +73,8 @@ test.then(
     setTimeout(() => {
       console.log(data)
     }, 2000)
-     data
+    // eslint-disable-next-line no-unused-expressions
+    data
   }
 ).then((data) => {
   console.log(data + '111')

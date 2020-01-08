@@ -2,9 +2,9 @@
  * @param {string} s
  * @return {number}
  */
-const lengthOfLongestSubstring = function(s) {
+const lengthOfLongestSubstring = function (s) {
   let res = 0
-  let temp = []
+  const temp = []
   for (let i = 0; i < s.length; i++) {
     let index = temp.indexOf(s[i])
     if (index !== -1) {
@@ -16,9 +16,9 @@ const lengthOfLongestSubstring = function(s) {
   return res
 }
 
-var lengthOfLongestSubstring2 = function(s) {
-  var res = 0,
-    i = 0
+var lengthOfLongestSubstring2 = function (s) {
+  var res = 0
+  var i = 0
   var temp = []
   while (i < s.length) {
     if (temp.indexOf(s[i]) === -1) {

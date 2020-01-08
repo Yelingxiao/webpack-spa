@@ -1,10 +1,10 @@
 const fs = require('fs')
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const files = fs.readdirSync(path.join(__dirname, './src'))
-let entry = {}
-let page = []
+const entry = {}
+const page = []
 files.forEach(key => {
   entry[key] = path.join(__dirname, 'src/' + key + '/index.js')
 })

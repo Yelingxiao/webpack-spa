@@ -1,5 +1,5 @@
-let arr = [1, 2, 3, 4]
-let a = arr.reduce((pre, cur) => pre + cur)
+const arr = [1, 2, 3, 4]
+const a = arr.reduce((pre, cur) => pre + cur)
 console.log(a)
 
 const userList = [
@@ -21,16 +21,16 @@ const userList = [
     sex: 0,
     email: ''
   }
-];
-function keyByUsernameReducer(acc, person) {
-  return {...acc, [person.username]: person};
+]
+function keyByUsernameReducer (acc, person) {
+  return { ...acc, [person.username]: person }
 }
-const userObj = userList.reduce(keyByUsernameReducer, {});
-console.log(userObj);
+const userObj = userList.reduce(keyByUsernameReducer, {})
+console.log(userObj)
 
 
 var flattened = [[0, 1], [2, 3], [4, 5]].reduce(
-  ( acc, cur ) => acc.concat(cur)
- );
+  (acc, cur) => acc.concat(cur)
+)
 
 console.log(flattened)

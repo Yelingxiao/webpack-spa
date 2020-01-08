@@ -1,27 +1,28 @@
+/* eslint-disable no-unused-expressions */
 import { tween } from 'popmotion'
-const { random, PI, cos, sin } = Math,
-  PI2 = PI * 2,
-  pool = [],
-  colors = [0x0781f0, 0x84bae8, 0x47c6d6, 0x81d7e2],
-  { renderer, stage, ticker, screen, view } = new PIXI.Application({
-    antialias: true,
-    backgroundColor: 0xd9e6f3
-  }),
-  zone = screen.clone()
+const { random, PI, cos, sin } = Math
+const PI2 = PI * 2
+const pool = []
+const colors = [0x0781f0, 0x84bae8, 0x47c6d6, 0x81d7e2]
+const { renderer, stage, ticker, screen, view } = new PIXI.Application({
+  antialias: true,
+  backgroundColor: 0xd9e6f3
+})
+const zone = screen.clone()
 
 zone.pad(500)
 document.body.appendChild(view)
 
 const dots = []
 
-function render(s) {
+function render (s) {
   const text = new PIXI.Text(s, {
     fill: 0x639bff,
     fontSize: 72
-  }),
-    { width, height } = text,
-    pixels = renderer.extract.pixels(text),
-    delta = 4
+  })
+  const { width, height } = text
+  const pixels = renderer.extract.pixels(text)
+  const delta = 4
 
   for (let x = 0; x <= width; x += delta) {
     for (let y = 0; y <= height; y += delta) {
@@ -49,7 +50,7 @@ setInterval(() => {
   render(list[i++])
 }, 4e3)
 
-//throw(1)
+// throw(1)
 
 for (let i = 0; i < 300; i++) {
   const dot = create()
@@ -57,7 +58,7 @@ for (let i = 0; i < 300; i++) {
   stage.addChild(dot)
 }
 
-function create() {
+function create () {
   const dot = new PIXI.Graphics()
     .beginFill(0xffffff)
     .drawCircle(0, 0, 2)
