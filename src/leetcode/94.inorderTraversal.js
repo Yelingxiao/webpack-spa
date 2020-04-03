@@ -14,6 +14,7 @@ const list = [1, null, 2, 3]
 function Node (value) {
   this.value = value
 }
+// 插入节点
 function insertNode (tree, value) {
   let node = tree
   let key = null
