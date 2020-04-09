@@ -18,7 +18,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .card {
-  width: 110px;
+  width: 120px;
   height: 300px;
   margin-left: 20px;
   margin-top: 40px;
